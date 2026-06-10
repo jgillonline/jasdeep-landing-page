@@ -6,7 +6,7 @@
   <title>Jazz Gill Media — Marketing That Moves</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,800&family=DM+Serif+Display:ital@0;1&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -99,17 +99,22 @@
     }
 
     /* LOGO */
-    .logo { display: flex; align-items: center; gap: 11px; text-decoration: none; }
-    .logo-words { display: flex; flex-direction: column; line-height: 1; }
+    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-words { display: flex; flex-direction: column; line-height: 1; gap: 4px; }
     .logo-name {
-      font-family: 'DM Serif Display', Georgia, serif;
-      font-size: 20px; font-weight: 400; font-style: italic;
-      color: var(--navy); letter-spacing: 0.01em; line-height: 1;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--navy); line-height: 1;
     }
+    .logo-name .gold { color: #C9A055; }
     .logo-tag {
-      font-size: 7.5px; font-weight: 700; letter-spacing: 0.3em;
-      text-transform: uppercase; color: var(--blue); margin-top: 5px;
-      font-family: var(--font);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 8px; font-weight: 600; letter-spacing: 0.28em;
+      text-transform: uppercase; color: #C9A055;
+      display: flex; align-items: center; gap: 5px;
+    }
+    .logo-tag::before, .logo-tag::after {
+      content: ''; display: block; width: 12px; height: 1px; background: #C9A055;
     }
 
     .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
@@ -613,21 +618,29 @@
 <!-- NAV -->
 <nav id="nav">
   <a class="logo" href="#">
-    <svg width="26" height="38" viewBox="0 0 26 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- JG Monogram Mark -->
+    <svg width="48" height="52" viewBox="0 0 48 52" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <linearGradient id="jg1" x1="0" y1="0" x2="10" y2="38" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stop-color="#60A5FA"/>
-          <stop offset="100%" stop-color="#1D4ED8"/>
+        <linearGradient id="goldG" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#D4AF5A"/>
+          <stop offset="60%" stop-color="#C9A055"/>
+          <stop offset="100%" stop-color="#8B6820"/>
         </linearGradient>
       </defs>
-      <!-- J crossbar -->
-      <path d="M4,5 H22" stroke="url(#jg1)" stroke-width="4.5" stroke-linecap="round"/>
-      <!-- J stem + hook -->
-      <path d="M16,5 V28 Q16,35 9,35 Q3.5,35 3.5,29" stroke="url(#jg1)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <!-- J — dark serif italic -->
+      <text x="2" y="46" font-family="Cormorant Garamond, Georgia, serif"
+            font-size="52" font-weight="700" font-style="italic"
+            fill="#111111" letter-spacing="-4">J</text>
+      <!-- G — gold serif italic, overlapping -->
+      <text x="22" y="46" font-family="Cormorant Garamond, Georgia, serif"
+            font-size="44" font-weight="700" font-style="italic"
+            fill="url(#goldG)">G</text>
+      <!-- Swoosh arc connecting J to G -->
+      <path d="M 18 12 Q 30 4 40 16" stroke="url(#goldG)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
     </svg>
     <div class="logo-words">
-      <span class="logo-name">Jazz Gill</span>
-      <span class="logo-tag">Media</span>
+      <span class="logo-name"><span>JAZZ</span><span class="gold">GILL</span></span>
+      <span class="logo-tag">MEDIA</span>
     </div>
   </a>
   <ul class="nav-links">
@@ -1039,19 +1052,24 @@
     <div class="footer-top">
       <div class="footer-brand">
         <a class="logo" href="#">
-          <svg width="20" height="30" viewBox="0 0 26 38" fill="none">
+          <svg width="44" height="48" viewBox="0 0 48 52" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <linearGradient id="jg2" x1="0" y1="0" x2="10" y2="38" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#93C5FD"/>
-                <stop offset="100%" stop-color="#60A5FA"/>
+              <linearGradient id="goldG2" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#D4AF5A"/>
+                <stop offset="100%" stop-color="#8B6820"/>
               </linearGradient>
             </defs>
-            <path d="M4,5 H22" stroke="url(#jg2)" stroke-width="4.5" stroke-linecap="round"/>
-            <path d="M16,5 V28 Q16,35 9,35 Q3.5,35 3.5,29" stroke="url(#jg2)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <text x="2" y="46" font-family="Cormorant Garamond, Georgia, serif"
+                  font-size="52" font-weight="700" font-style="italic"
+                  fill="rgba(255,255,255,0.85)" letter-spacing="-4">J</text>
+            <text x="22" y="46" font-family="Cormorant Garamond, Georgia, serif"
+                  font-size="44" font-weight="700" font-style="italic"
+                  fill="url(#goldG2)">G</text>
+            <path d="M 18 12 Q 30 4 40 16" stroke="url(#goldG2)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
           </svg>
           <div class="logo-words">
-            <span class="logo-name" style="color:rgba(255,255,255,0.78)">Jazz Gill</span>
-            <span class="logo-tag">Media</span>
+            <span class="logo-name"><span style="color:rgba(255,255,255,0.85)">JAZZ</span><span class="gold">GILL</span></span>
+            <span class="logo-tag">MEDIA</span>
           </div>
         </a>
         <p class="footer-desc">A marketing agency helping businesses grow through paid ads, content creation, and websites built to convert.</p>
