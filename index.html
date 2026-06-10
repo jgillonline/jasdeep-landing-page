@@ -485,14 +485,31 @@
     .wc-result strong { color:var(--gold); font-weight:700; }
 
     /* ── WORK VIDEO CAROUSEL ── */
+    .reel-carousel-wrap { position: relative; }
     .reel-carousel {
       display: flex; gap: 16px; overflow-x: auto;
       scroll-snap-type: x mandatory;
       padding-bottom: 12px;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
+      cursor: grab;
     }
+    .reel-carousel.grabbing { cursor: grabbing; }
     .reel-carousel::-webkit-scrollbar { display: none; }
+    .reel-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(255,255,255,0.92); border: 1px solid var(--border);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; z-index: 10;
+      transition: background 0.2s, transform 0.2s;
+      font-size: 1rem; color: var(--navy);
+    }
+    .reel-nav:hover { background: var(--gold); color: white; transform: translateY(-50%) scale(1.08); }
+    .reel-nav.prev { left: -22px; }
+    .reel-nav.next { right: -22px; }
+    .reel-nav:disabled { opacity: 0.3; pointer-events: none; }
     .reel-item {
       flex-shrink: 0;
       width: 300px;
@@ -503,10 +520,23 @@
       scroll-snap-align: start;
       box-shadow: var(--shadow-lg);
       border: 1px solid var(--border);
+      cursor: pointer;
     }
     .work-video {
       width: 100%; height: 100%; object-fit: cover; display: block;
     }
+    /* play/pause icon overlay */
+    .reel-pp {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 56px; height: 56px; border-radius: 50%;
+      background: rgba(0,0,0,0.55); backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity 0.2s; pointer-events: none;
+      font-size: 1.4rem; color: white;
+    }
+    .reel-item:hover .reel-pp,
+    .reel-item.paused .reel-pp { opacity: 1; }
+    .reel-item.paused .reel-pp { background: rgba(201,160,85,0.85); }
     .work-video-overlay {
       position: absolute; bottom: 20px; left: 16px; right: 16px;
       display: flex; flex-direction: column; gap: 6px;
@@ -947,13 +977,17 @@
     </div>
 
     <!-- Reel Carousel -->
-    <div class="reel-carousel r">
+    <div class="reel-carousel-wrap">
+    <button class="reel-nav prev" id="reelPrev" aria-label="Previous">&#8592;</button>
+    <button class="reel-nav next" id="reelNext" aria-label="Next">&#8594;</button>
+    <div class="reel-carousel r" id="reelTrack">
 
-      <!-- Reel 1 — real video -->
+      <!-- Reel 1 -->
       <div class="reel-item">
-        <video class="work-video" autoplay muted loop playsinline>
+        <video class="work-video" muted loop playsinline>
           <source src="work-reel.mp4" type="video/mp4">
         </video>
+        <div class="reel-pp">&#9654;</div>
         <div class="work-video-overlay">
           <span class="wvo-tag">Content Creation</span>
           <div class="wvo-title">Client Reel</div>
@@ -961,11 +995,12 @@
         </div>
       </div>
 
-      <!-- Reel 2 — real video -->
+      <!-- Reel 2 -->
       <div class="reel-item">
-        <video class="work-video" autoplay muted loop playsinline>
+        <video class="work-video" muted loop playsinline>
           <source src="work-reel-2.mp4" type="video/mp4">
         </video>
+        <div class="reel-pp">&#9654;</div>
         <div class="work-video-overlay">
           <span class="wvo-tag">Paid Ads</span>
           <div class="wvo-title">Anytime Fitness Acton</div>
@@ -973,11 +1008,12 @@
         </div>
       </div>
 
-      <!-- Reel 3 — real video -->
+      <!-- Reel 3 -->
       <div class="reel-item">
-        <video class="work-video" autoplay muted loop playsinline>
+        <video class="work-video" muted loop playsinline>
           <source src="work-reel-3.mp4" type="video/mp4">
         </video>
+        <div class="reel-pp">&#9654;</div>
         <div class="work-video-overlay">
           <span class="wvo-tag">Content</span>
           <div class="wvo-title">Beirut Grill</div>
@@ -985,11 +1021,12 @@
         </div>
       </div>
 
-      <!-- Reel 4 — real video -->
+      <!-- Reel 4 -->
       <div class="reel-item">
-        <video class="work-video" autoplay muted loop playsinline>
+        <video class="work-video" muted loop playsinline>
           <source src="work-reel-4.mp4" type="video/mp4">
         </video>
+        <div class="reel-pp">&#9654;</div>
         <div class="work-video-overlay">
           <span class="wvo-tag">Brand Content</span>
           <div class="wvo-title">Elevating Education</div>
@@ -997,11 +1034,12 @@
         </div>
       </div>
 
-      <!-- Reel 5 — real video -->
+      <!-- Reel 5 -->
       <div class="reel-item">
-        <video class="work-video" autoplay muted loop playsinline>
+        <video class="work-video" muted loop playsinline>
           <source src="work-reel-5.mp4" type="video/mp4">
         </video>
+        <div class="reel-pp">&#9654;</div>
         <div class="work-video-overlay">
           <span class="wvo-tag">Paid Ads</span>
           <div class="wvo-title">Live Brand Promotions</div>
@@ -1010,6 +1048,7 @@
       </div>
 
     </div>
+    </div><!-- /reel-carousel-wrap -->
 
     <!-- Result Cards -->
     <div class="work-grid" style="margin-top:20px">
@@ -1462,6 +1501,78 @@
   });
 
   setInterval(() => showResult((currentResult + 1) % results.length), 4000);
+
+  /* ── REEL CAROUSEL: scroll, play/pause, drag ── */
+  (function() {
+    const track = document.getElementById('reelTrack');
+    const btnPrev = document.getElementById('reelPrev');
+    const btnNext = document.getElementById('reelNext');
+    const items = Array.from(track.querySelectorAll('.reel-item'));
+    const videos = items.map(el => el.querySelector('video'));
+    const ITEM_W = 316; // 300px + 16px gap
+
+    // IntersectionObserver: autoplay visible, pause others
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const vid = entry.target.querySelector('video');
+        const item = entry.target;
+        if (!vid) return;
+        if (entry.isIntersecting) {
+          if (!item.classList.contains('paused')) vid.play().catch(() => {});
+          item.querySelector('.reel-pp').innerHTML = '&#10074;&#10074;';
+        } else {
+          vid.pause();
+        }
+      });
+    }, { root: track, threshold: 0.6 });
+    items.forEach(item => observer.observe(item));
+
+    // Click to pause/play
+    items.forEach(item => {
+      item.addEventListener('click', () => {
+        const vid = item.querySelector('video');
+        const pp = item.querySelector('.reel-pp');
+        if (vid.paused) {
+          vid.play().catch(() => {});
+          item.classList.remove('paused');
+          pp.innerHTML = '&#10074;&#10074;';
+        } else {
+          vid.pause();
+          item.classList.add('paused');
+          pp.innerHTML = '&#9654;';
+        }
+      });
+    });
+
+    // Prev/Next buttons
+    function scrollTo(dir) {
+      track.scrollBy({ left: dir * ITEM_W, behavior: 'smooth' });
+    }
+    btnPrev.addEventListener('click', () => scrollTo(-1));
+    btnNext.addEventListener('click', () => scrollTo(1));
+
+    function updateNav() {
+      btnPrev.disabled = track.scrollLeft < 10;
+      btnNext.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 10;
+    }
+    track.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
+
+    // Mouse drag to scroll
+    let isDragging = false, startX, startScroll;
+    track.addEventListener('mousedown', e => {
+      isDragging = true; startX = e.pageX; startScroll = track.scrollLeft;
+      track.classList.add('grabbing');
+    });
+    document.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+      track.scrollLeft = startScroll - (e.pageX - startX);
+    });
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
+      track.classList.remove('grabbing');
+    });
+  })();
 
   function onSubmit(e) {
     e.preventDefault();
