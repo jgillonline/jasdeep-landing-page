@@ -484,6 +484,34 @@
     .wc-result { font-size:0.82rem; color:var(--grey); }
     .wc-result strong { color:var(--gold); font-weight:700; }
 
+    /* ── WORK VIDEO ── */
+    .work-video-wrap {
+      position: relative; border-radius: 20px; overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--navy);
+      aspect-ratio: 16/9;
+      max-height: 520px;
+    }
+    .work-video {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .work-video-overlay {
+      position: absolute; bottom: 24px; left: 24px;
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .wvo-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--gold); color: var(--navy);
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 4px 12px; border-radius: 100px;
+      width: fit-content;
+    }
+    .wvo-title {
+      font-size: 1.4rem; font-weight: 800; color: white;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+      letter-spacing: -0.02em;
+    }
+
     /* ── STATS ── */
     #stats { background:var(--navy); padding:80px 60px; }
     .stats-grid { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:40px; }
@@ -890,37 +918,50 @@
       </div>
       <p class="sec-sub r d2" style="max-width:320px">Real campaigns. Real businesses. Real numbers.</p>
     </div>
-    <div class="work-grid">
+
+    <!-- Featured Video -->
+    <div class="work-video-wrap r">
+      <video class="work-video" autoplay muted loop playsinline>
+        <source src="work-reel.mp4" type="video/mp4">
+      </video>
+      <div class="work-video-overlay">
+        <span class="wvo-tag">Content Creation</span>
+        <div class="wvo-title">Client Reel</div>
+      </div>
+    </div>
+
+    <!-- Result Cards -->
+    <div class="work-grid" style="margin-top:20px">
       <div class="wc r d1">
-        <div class="wc-img wi1">🛒</div>
+        <div class="wc-img wi1">🏋️</div>
         <div class="wc-body">
-          <div class="wc-cat">Paid Ads · E-Commerce</div>
-          <div class="wc-title">Local Retail Brand — Meta Ads</div>
-          <div class="wc-result">Achieved <strong>4.2× ROAS</strong> in 60 days, scaling from $500 to $8k/mo ad spend</div>
+          <div class="wc-cat">Paid Ads · Fitness</div>
+          <div class="wc-title">Anytime Fitness Acton — Meta Ads</div>
+          <div class="wc-result"><strong>+42 leads in 30 days</strong> at £4.80 cost per lead · 3.8× ROAS</div>
         </div>
       </div>
       <div class="wc r d2">
-        <div class="wc-img wi2">🏋️</div>
+        <div class="wc-img wi2">🎓</div>
         <div class="wc-body">
-          <div class="wc-cat">Website · Service Business</div>
-          <div class="wc-title">Fitness Studio — Rebrand & Site</div>
-          <div class="wc-result">New site drove <strong>+210% more bookings</strong></div>
+          <div class="wc-cat">Content · Education</div>
+          <div class="wc-title">Elevating Education — Content Strategy</div>
+          <div class="wc-result">Built brand presence and grew <strong>qualified enquiries</strong> through organic content</div>
         </div>
       </div>
       <div class="wc r d3">
         <div class="wc-img wi3">🍽️</div>
         <div class="wc-body">
-          <div class="wc-cat">Content · Social Media</div>
-          <div class="wc-title">Restaurant Group — Content Strategy</div>
-          <div class="wc-result">Grew Instagram <strong>from 800 to 12k</strong> in 4 months</div>
+          <div class="wc-cat">Content · Restaurant</div>
+          <div class="wc-title">Beirut Grill — Social Media</div>
+          <div class="wc-result">Consistent content driving <strong>more footfall</strong> and online visibility</div>
         </div>
       </div>
       <div class="wc r d4">
-        <div class="wc-img wi4">🏡</div>
+        <div class="wc-img wi4">📣</div>
         <div class="wc-body">
-          <div class="wc-cat">Google Ads · Real Estate</div>
-          <div class="wc-title">Property Firm — Lead Generation</div>
-          <div class="wc-result">Cut cost-per-lead by <strong>47%</strong> while doubling lead volume</div>
+          <div class="wc-cat">Paid Ads · Events</div>
+          <div class="wc-title">Live Brand Promotions — Campaign</div>
+          <div class="wc-result">Targeted ad campaigns delivering <strong>consistent event attendance</strong></div>
         </div>
       </div>
     </div>
