@@ -300,6 +300,15 @@
     }
     .rc-client-name { font-size: 0.875rem; font-weight: 700; color: var(--navy); }
     .rc-client-type { font-size: 0.75rem; color: var(--grey); margin-top: 2px; }
+    .rc-dots { display:flex; gap:5px; margin-left:auto; }
+    .rc-pip {
+      width:6px; height:6px; border-radius:50%;
+      background: var(--border); cursor:pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .rc-pip.active { background: var(--navy); transform: scale(1.3); }
+    .rc-fade { animation: rcFadeIn 0.5s var(--ease); }
+    @keyframes rcFadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
 
     /* hero right — image + testimonial */
     .hero-visual {
@@ -737,31 +746,37 @@
       </div>
     </div>
     <div class="hero-visual">
-      <div class="result-card">
+      <div class="result-card" id="resultCard">
         <div class="rc-header">
           <span class="rc-dot"></span>
           <span class="rc-label">CLIENT RESULT</span>
+          <div class="rc-dots">
+            <span class="rc-pip active" data-i="0"></span>
+            <span class="rc-pip" data-i="1"></span>
+            <span class="rc-pip" data-i="2"></span>
+            <span class="rc-pip" data-i="3"></span>
+          </div>
         </div>
-        <div class="rc-metrics">
+        <div class="rc-metrics" id="rcMetrics">
           <div class="rc-metric">
-            <div class="rc-val">+42</div>
-            <div class="rc-desc">Leads in 30 Days</div>
+            <div class="rc-val" id="rcV1">+42</div>
+            <div class="rc-desc" id="rcD1">Leads in 30 Days</div>
           </div>
           <div class="rc-metric">
-            <div class="rc-val">£4.80</div>
-            <div class="rc-desc">Cost Per Lead</div>
+            <div class="rc-val" id="rcV2">£4.80</div>
+            <div class="rc-desc" id="rcD2">Cost Per Lead</div>
           </div>
           <div class="rc-metric">
-            <div class="rc-val">3.8×</div>
-            <div class="rc-desc">ROAS</div>
+            <div class="rc-val" id="rcV3">3.8×</div>
+            <div class="rc-desc" id="rcD3">ROAS</div>
           </div>
         </div>
         <div class="rc-divider"></div>
         <div class="rc-client">
-          <div class="rc-client-icon">📚</div>
+          <div class="rc-client-icon" id="rcIcon">📚</div>
           <div>
-            <div class="rc-client-name">Elevating Education</div>
-            <div class="rc-client-type">Meta Ads Campaign · 30 days</div>
+            <div class="rc-client-name" id="rcName">Elevating Education</div>
+            <div class="rc-client-type" id="rcType">Meta Ads Campaign · 30 days</div>
           </div>
         </div>
       </div>
@@ -1253,6 +1268,35 @@
   });
 
   /* FORM */
+  /* RESULT CARD CAROUSEL */
+  const results = [
+    { v1:'+42',   d1:'Leads in 30 Days', v2:'£4.80', d2:'Cost Per Lead',    v3:'3.8×', d3:'ROAS',          icon:'📚', name:'Elevating Education',   type:'Meta Ads Campaign · 30 days' },
+    { v1:'+67',   d1:'Leads in 60 Days', v2:'£5.20', d2:'Cost Per Lead',    v3:'4.1×', d3:'ROAS',          icon:'🏋️', name:'Anytime Fitness Acton', type:'Meta Ads Campaign · 60 days' },
+    { v1:'+31',   d1:'New Enquiries',    v2:'£6.10', d2:'Cost Per Lead',    v3:'3.2×', d3:'ROAS',          icon:'🥙', name:'Beirut Grill',           type:'Meta Ads Campaign · 30 days' },
+    { v1:'+210%', d1:'More Bookings',    v2:'£370',  d2:'Website Build',    v3:'2×',   d3:'Conversion Rate',icon:'📈', name:'Dropkick Agency',        type:'Website + Landing Page' },
+  ];
+  let currentResult = 0;
+
+  function showResult(i) {
+    const r = results[i];
+    const fields = [
+      ['rcV1',r.v1],['rcD1',r.d1],['rcV2',r.v2],['rcD2',r.d2],
+      ['rcV3',r.v3],['rcD3',r.d3],['rcIcon',r.icon],['rcName',r.name],['rcType',r.type]
+    ];
+    fields.forEach(([id, val]) => { document.getElementById(id).textContent = val; });
+    document.querySelectorAll('.rc-pip').forEach((p,idx) => p.classList.toggle('active', idx===i));
+    document.getElementById('rcMetrics').classList.remove('rc-fade');
+    void document.getElementById('rcMetrics').offsetWidth;
+    document.getElementById('rcMetrics').classList.add('rc-fade');
+    currentResult = i;
+  }
+
+  document.querySelectorAll('.rc-pip').forEach(pip => {
+    pip.addEventListener('click', () => showResult(+pip.dataset.i));
+  });
+
+  setInterval(() => showResult((currentResult + 1) % results.length), 4000);
+
   function onSubmit(e) {
     e.preventDefault();
     const btn = document.getElementById('subBtn');
