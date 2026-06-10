@@ -366,16 +366,46 @@
 
     /* ── TRUSTED BY ── */
     #trusted {
-      background:var(--surface);
-      border-top:1px solid var(--border-light);
-      border-bottom:1px solid var(--border-light);
-      padding:40px 60px;
+      background: var(--surface);
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+      padding: 28px 0;
+      overflow: hidden;
     }
-    .trusted-inner { max-width:1200px; margin:0 auto; display:flex; align-items:center; gap:40px; flex-wrap:wrap; }
-    .trusted-label { font-size:0.72rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); white-space:nowrap; }
-    .trusted-logos { display:flex; align-items:center; gap:36px; flex-wrap:wrap; }
-    .tl { font-size:0.875rem; font-weight:700; color:var(--muted); letter-spacing:-0.01em; transition:color 0.2s; cursor:default; }
-    .tl:hover { color:var(--slate); }
+    .trusted-header {
+      text-align: center;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 20px;
+    }
+    .marquee-wrap {
+      position: relative; overflow: hidden;
+    }
+    .marquee-wrap::before, .marquee-wrap::after {
+      content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2; pointer-events: none;
+    }
+    .marquee-wrap::before { left: 0; background: linear-gradient(to right, var(--surface), transparent); }
+    .marquee-wrap::after  { right: 0; background: linear-gradient(to left, var(--surface), transparent); }
+    .marquee-track {
+      display: flex; gap: 0;
+      animation: marquee 28s linear infinite;
+      width: max-content;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .tl {
+      font-size: 0.9rem; font-weight: 700; color: var(--muted);
+      letter-spacing: 0.02em; white-space: nowrap; padding: 0 40px;
+      transition: color 0.2s; cursor: default;
+      display: flex; align-items: center; gap: 40px;
+    }
+    .tl::after {
+      content: '·'; color: var(--border); font-size: 1.2rem;
+    }
+    .tl:hover { color: var(--slate); }
 
     /* ── SHARED ── */
     .wrap { max-width:1200px; margin:0 auto; padding:100px 60px; }
@@ -786,12 +816,26 @@
 
 <!-- TRUSTED BY -->
 <div id="trusted">
-  <div class="trusted-inner">
-    <span class="trusted-label">Trusted by</span>
-    <div class="trusted-logos">
+  <div class="trusted-header">Trusted by local businesses</div>
+  <div class="marquee-wrap">
+    <div class="marquee-track">
       <span class="tl">Anytime Fitness Acton</span>
       <span class="tl">Elevating Education</span>
       <span class="tl">Beirut Grill</span>
+      <span class="tl">Live Brand Promotions</span>
+      <span class="tl">Comfort Kitchens</span>
+      <span class="tl">The Kings Head</span>
+      <span class="tl">3c'z Boneless Chicken</span>
+      <span class="tl">Dropkick Agency</span>
+      <!-- duplicate for seamless loop -->
+      <span class="tl">Anytime Fitness Acton</span>
+      <span class="tl">Elevating Education</span>
+      <span class="tl">Beirut Grill</span>
+      <span class="tl">Live Brand Promotions</span>
+      <span class="tl">Comfort Kitchens</span>
+      <span class="tl">The Kings Head</span>
+      <span class="tl">3c'z Boneless Chicken</span>
+      <span class="tl">Dropkick Agency</span>
     </div>
   </div>
 </div>
