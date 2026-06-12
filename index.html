@@ -484,6 +484,23 @@
     .wc-result { font-size:0.82rem; color:var(--grey); }
     .wc-result strong { color:var(--gold); font-weight:700; }
 
+    /* ── WORK CATEGORY SECTIONS ── */
+    .work-cat { margin-bottom: 52px; }
+    .work-cat:last-child { margin-bottom: 0; }
+    .work-cat-head {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 18px;
+    }
+    .work-cat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem; font-weight: 700; color: var(--gold);
+      opacity: 0.7; letter-spacing: 0.06em;
+    }
+    .work-cat-label {
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--navy);
+    }
+
     /* ── WORK VIDEO CAROUSEL ── */
     .reel-carousel-wrap { position: relative; }
     .reel-carousel {
@@ -987,64 +1004,102 @@
       <p class="sec-sub r d2" style="max-width:320px">Real campaigns. Real businesses. Real numbers.</p>
     </div>
 
-    <!-- Reel Carousel -->
-    <div class="reel-carousel-wrap">
-    <button class="reel-nav prev" id="reelPrev" aria-label="Previous">&#8592;</button>
-    <button class="reel-nav next" id="reelNext" aria-label="Next">&#8594;</button>
-    <div class="reel-carousel r" id="reelTrack">
-
-      <!-- Reel 1 -->
-      <div class="reel-item">
-        <video class="work-video" muted loop playsinline>
-          <source src="work-reel.mp4" type="video/mp4">
-        </video>
-        <div class="reel-pp">&#9654;</div>
-        <div class="work-video-overlay">
-          <span class="wvo-tag">Content Creation</span>
-          <div class="wvo-title">Client Reel</div>
-          <div class="wvo-client">Jazz Gill Media</div>
+    <!-- FOOD & HOSPITALITY -->
+    <div class="work-cat r">
+      <div class="work-cat-head">
+        <span class="work-cat-num">01</span>
+        <span class="work-cat-label">Food &amp; Hospitality</span>
+      </div>
+      <div class="reel-carousel-wrap">
+        <button class="reel-nav prev" data-track="track1" aria-label="Previous">&#8592;</button>
+        <button class="reel-nav next" data-track="track1" aria-label="Next">&#8594;</button>
+        <div class="reel-carousel" id="track1">
+          <div class="reel-item">
+            <video class="work-video" muted loop playsinline>
+              <source src="work-reel-3.mp4" type="video/mp4">
+            </video>
+            <div class="reel-pp">&#9654;</div>
+            <div class="work-video-overlay">
+              <span class="wvo-tag">Content</span>
+              <div class="wvo-title">Beirut Grill</div>
+              <div class="wvo-client">Social Media Reel</div>
+            </div>
+          </div>
         </div>
       </div>
-
-      <!-- Reel 2 -->
-      <div class="reel-item">
-        <video class="work-video" muted loop playsinline>
-          <source src="work-reel-2.mp4" type="video/mp4">
-        </video>
-        <div class="reel-pp">&#9654;</div>
-      </div>
-
-      <!-- Reel 3 -->
-      <div class="reel-item">
-        <video class="work-video" muted loop playsinline>
-          <source src="work-reel-3.mp4" type="video/mp4">
-        </video>
-        <div class="reel-pp">&#9654;</div>
-      </div>
-
-      <!-- Reel 4 -->
-      <div class="reel-item">
-        <video class="work-video" muted loop playsinline>
-          <source src="work-reel-4.mp4" type="video/mp4">
-        </video>
-        <div class="reel-pp">&#9654;</div>
-      </div>
-
-      <!-- Reel 5 -->
-      <div class="reel-item">
-        <video class="work-video" muted loop playsinline>
-          <source src="work-reel-5.mp4" type="video/mp4">
-        </video>
-        <div class="reel-pp">&#9654;</div>
-        <div class="work-video-overlay">
-          <span class="wvo-tag">Paid Ads</span>
-          <div class="wvo-title">Live Brand Promotions</div>
-          <div class="wvo-client">Meta Ads Campaign</div>
-        </div>
-      </div>
-
     </div>
-    </div><!-- /reel-carousel-wrap -->
+
+    <!-- HEALTH & SUPPLEMENTS -->
+    <div class="work-cat r d1">
+      <div class="work-cat-head">
+        <span class="work-cat-num">02</span>
+        <span class="work-cat-label">Health &amp; Supplements</span>
+      </div>
+      <div class="reel-carousel-wrap">
+        <button class="reel-nav prev" data-track="track2" aria-label="Previous">&#8592;</button>
+        <button class="reel-nav next" data-track="track2" aria-label="Next">&#8594;</button>
+        <div class="reel-carousel" id="track2">
+          <div class="reel-item">
+            <video class="work-video" muted loop playsinline>
+              <source src="work-reel-2.mp4" type="video/mp4">
+            </video>
+            <div class="reel-pp">&#9654;</div>
+            <div class="work-video-overlay">
+              <span class="wvo-tag">Paid Ads</span>
+              <div class="wvo-title">Anytime Fitness Acton</div>
+              <div class="wvo-client">Meta Ads Campaign</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LIFESTYLE -->
+    <div class="work-cat r d2">
+      <div class="work-cat-head">
+        <span class="work-cat-num">03</span>
+        <span class="work-cat-label">Lifestyle</span>
+      </div>
+      <div class="reel-carousel-wrap">
+        <button class="reel-nav prev" data-track="track3" aria-label="Previous">&#8592;</button>
+        <button class="reel-nav next" data-track="track3" aria-label="Next">&#8594;</button>
+        <div class="reel-carousel" id="track3">
+          <div class="reel-item">
+            <video class="work-video" muted loop playsinline>
+              <source src="work-reel.mp4" type="video/mp4">
+            </video>
+            <div class="reel-pp">&#9654;</div>
+            <div class="work-video-overlay">
+              <span class="wvo-tag">Content Creation</span>
+              <div class="wvo-title">Client Reel</div>
+              <div class="wvo-client">Jazz Gill Media</div>
+            </div>
+          </div>
+          <div class="reel-item">
+            <video class="work-video" muted loop playsinline>
+              <source src="work-reel-4.mp4" type="video/mp4">
+            </video>
+            <div class="reel-pp">&#9654;</div>
+            <div class="work-video-overlay">
+              <span class="wvo-tag">Brand Content</span>
+              <div class="wvo-title">Elevating Education</div>
+              <div class="wvo-client">Content Strategy</div>
+            </div>
+          </div>
+          <div class="reel-item">
+            <video class="work-video" muted loop playsinline>
+              <source src="work-reel-5.mp4" type="video/mp4">
+            </video>
+            <div class="reel-pp">&#9654;</div>
+            <div class="work-video-overlay">
+              <span class="wvo-tag">Paid Ads</span>
+              <div class="wvo-title">Live Brand Promotions</div>
+              <div class="wvo-client">Meta Ads Campaign</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -1427,76 +1482,72 @@
 
   setInterval(() => showResult((currentResult + 1) % results.length), 4000);
 
-  /* ── REEL CAROUSEL: scroll, play/pause, drag ── */
+  /* ── REEL CAROUSELS: scroll, play/pause, drag (per-track) ── */
   (function() {
-    const track = document.getElementById('reelTrack');
-    const btnPrev = document.getElementById('reelPrev');
-    const btnNext = document.getElementById('reelNext');
-    const items = Array.from(track.querySelectorAll('.reel-item'));
-    const videos = items.map(el => el.querySelector('video'));
-    const ITEM_W = 316; // 300px + 16px gap
+    const ITEM_W = 316;
 
-    // IntersectionObserver: autoplay visible, pause others
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        const vid = entry.target.querySelector('video');
-        const item = entry.target;
-        if (!vid) return;
-        if (entry.isIntersecting) {
-          if (!item.classList.contains('paused')) vid.play().catch(() => {});
-          item.querySelector('.reel-pp').innerHTML = '&#10074;&#10074;';
-        } else {
-          vid.pause();
-        }
+    function initTrack(track) {
+      if (!track) return;
+      const items = Array.from(track.querySelectorAll('.reel-item'));
+
+      // IntersectionObserver: autoplay visible, pause others
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          const vid = entry.target.querySelector('video');
+          const item = entry.target;
+          if (!vid) return;
+          if (entry.isIntersecting) {
+            if (!item.classList.contains('paused')) vid.play().catch(() => {});
+            item.querySelector('.reel-pp').innerHTML = '&#10074;&#10074;';
+          } else {
+            vid.pause();
+          }
+        });
+      }, { root: track, threshold: 0.6 });
+      items.forEach(item => observer.observe(item));
+
+      // Click to pause/play
+      items.forEach(item => {
+        item.addEventListener('click', () => {
+          const vid = item.querySelector('video');
+          const pp = item.querySelector('.reel-pp');
+          if (vid.paused) {
+            vid.play().catch(() => {});
+            item.classList.remove('paused');
+            pp.innerHTML = '&#10074;&#10074;';
+          } else {
+            vid.pause();
+            item.classList.add('paused');
+            pp.innerHTML = '&#9654;';
+          }
+        });
       });
-    }, { root: track, threshold: 0.6 });
-    items.forEach(item => observer.observe(item));
 
-    // Click to pause/play
-    items.forEach(item => {
-      item.addEventListener('click', () => {
-        const vid = item.querySelector('video');
-        const pp = item.querySelector('.reel-pp');
-        if (vid.paused) {
-          vid.play().catch(() => {});
-          item.classList.remove('paused');
-          pp.innerHTML = '&#10074;&#10074;';
-        } else {
-          vid.pause();
-          item.classList.add('paused');
-          pp.innerHTML = '&#9654;';
-        }
+      // Prev/Next buttons wired by data-track
+      const id = track.id;
+      document.querySelectorAll(`.reel-nav[data-track="${id}"]`).forEach(btn => {
+        btn.addEventListener('click', () => {
+          const dir = btn.classList.contains('prev') ? -1 : 1;
+          track.scrollBy({ left: dir * ITEM_W, behavior: 'smooth' });
+        });
       });
-    });
 
-    // Prev/Next buttons
-    function scrollTo(dir) {
-      track.scrollBy({ left: dir * ITEM_W, behavior: 'smooth' });
+      // Drag to scroll
+      let isDragging = false, startX, startScroll;
+      track.addEventListener('mousedown', e => {
+        isDragging = true; startX = e.pageX; startScroll = track.scrollLeft;
+        track.classList.add('grabbing');
+      });
+      document.addEventListener('mousemove', e => {
+        if (!isDragging) return;
+        track.scrollLeft = startScroll - (e.pageX - startX);
+      });
+      document.addEventListener('mouseup', () => {
+        isDragging = false; track.classList.remove('grabbing');
+      });
     }
-    btnPrev.addEventListener('click', () => scrollTo(-1));
-    btnNext.addEventListener('click', () => scrollTo(1));
 
-    function updateNav() {
-      btnPrev.disabled = track.scrollLeft < 10;
-      btnNext.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 10;
-    }
-    track.addEventListener('scroll', updateNav, { passive: true });
-    updateNav();
-
-    // Mouse drag to scroll
-    let isDragging = false, startX, startScroll;
-    track.addEventListener('mousedown', e => {
-      isDragging = true; startX = e.pageX; startScroll = track.scrollLeft;
-      track.classList.add('grabbing');
-    });
-    document.addEventListener('mousemove', e => {
-      if (!isDragging) return;
-      track.scrollLeft = startScroll - (e.pageX - startX);
-    });
-    document.addEventListener('mouseup', () => {
-      isDragging = false;
-      track.classList.remove('grabbing');
-    });
+    ['track1','track2','track3'].forEach(id => initTrack(document.getElementById(id)));
   })();
 
   function onSubmit(e) {
