@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio — Jazz Gill Media</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,800&family=DM+Serif+Display:ital@0;1&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white: #FFFFFF;
+      --surface: #F8F6F1;
+      --gold: #C9A055;
+      --gold-dark: #A07830;
+      --gold-light: #D4B870;
+      --gold-50: #FBF7EE;
+      --navy: #111111;
+      --border: #E8E0D0;
+      --font: 'Plus Jakarta Sans', sans-serif;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --shadow-lg: 0 24px 80px rgba(15,10,0,0.12), 0 8px 24px rgba(15,10,0,0.06);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--white);
+      color: var(--navy);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+    }
+    .logo-words { display: flex; flex-direction: column; line-height: 1.1; }
+    .logo-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px; font-weight: 700; letter-spacing: 0.06em;
+    }
+    .logo-name .gold { color: var(--gold); }
+    .logo-tag {
+      font-size: 9px; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .logo-tag::before, .logo-tag::after {
+      content: ''; flex: 1; height: 1px; background: var(--gold); opacity: 0.5; min-width: 18px;
+    }
+    .nav-back {
+      font-size: 0.82rem; font-weight: 600; color: var(--navy);
+      text-decoration: none; letter-spacing: 0.02em;
+      display: flex; align-items: center; gap: 6px;
+      opacity: 0.6; transition: opacity 0.2s;
+    }
+    .nav-back:hover { opacity: 1; }
+
+    /* ── HERO STRIP ── */
+    .port-hero {
+      background: var(--navy);
+      padding: 80px 48px 64px;
+      text-align: center;
+    }
+    .port-tag {
+      display: inline-block;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--gold);
+      border: 1px solid rgba(201,160,85,0.35);
+      border-radius: 100px; padding: 6px 16px; margin-bottom: 20px;
+    }
+    .port-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      color: white; line-height: 1.1; margin-bottom: 16px;
+    }
+    .port-title em { color: var(--gold); font-style: italic; }
+    .port-sub {
+      font-size: 1rem; color: rgba(255,255,255,0.5);
+      max-width: 480px; margin: 0 auto;
+    }
+
+    /* ── SECTION ── */
+    .port-section { padding: 72px 48px; border-bottom: 1px solid var(--border); }
+    .port-section:last-child { border-bottom: none; }
+    .section-header { margin-bottom: 32px; }
+    .section-cat {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 8px;
+    }
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      color: var(--navy); line-height: 1.15;
+    }
+
+    /* ── REEL GRID ── */
+    .reel-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 12px;
+    }
+    .reel-thumb {
+      position: relative;
+      aspect-ratio: 9/16;
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--navy);
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    }
+    .reel-thumb:hover { transform: translateY(-4px) scale(1.02); box-shadow: var(--shadow-lg); }
+    .reel-thumb video {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      pointer-events: none;
+    }
+    /* placeholder when no video */
+    .reel-thumb.placeholder {
+      background: linear-gradient(160deg, #1a1a1a 0%, #252525 100%);
+    }
+    .placeholder-inner {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 8px;
+    }
+    .placeholder-inner .ph-icon { font-size: 1.8rem; opacity: 0.2; }
+    .placeholder-inner .ph-label {
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgba(255,255,255,0.15);
+    }
+
+    /* play button overlay */
+    .play-btn {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(0,0,0,0.52); backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 1rem;
+      opacity: 0; transition: opacity 0.2s;
+      pointer-events: none;
+    }
+    .reel-thumb:hover .play-btn { opacity: 1; }
+    .reel-thumb.paused .play-btn { opacity: 1; background: rgba(201,160,85,0.82); }
+
+    /* bottom label */
+    .reel-label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 24px 10px 10px;
+      background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%);
+    }
+    .reel-label .rl-tag {
+      display: inline-block;
+      font-size: 0.58rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; background: var(--gold);
+      color: var(--navy); border-radius: 100px; padding: 2px 7px;
+      margin-bottom: 3px;
+    }
+    .reel-label .rl-name {
+      font-size: 0.7rem; font-weight: 700; color: white; line-height: 1.2;
+    }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      display: none; position: fixed; inset: 0; z-index: 999;
+      background: rgba(0,0,0,0.9); backdrop-filter: blur(8px);
+      align-items: center; justify-content: center;
+    }
+    .lightbox.open { display: flex; }
+    .lb-inner {
+      position: relative;
+      width: min(340px, 90vw);
+      aspect-ratio: 9/16;
+      border-radius: 20px; overflow: hidden;
+      box-shadow: 0 40px 120px rgba(0,0,0,0.6);
+    }
+    .lb-inner video { width: 100%; height: 100%; object-fit: cover; }
+    .lb-close {
+      position: absolute; top: -48px; right: 0;
+      background: none; border: none; color: white;
+      font-size: 1.6rem; cursor: pointer; line-height: 1;
+      opacity: 0.7; transition: opacity 0.2s;
+    }
+    .lb-close:hover { opacity: 1; }
+
+    /* ── FOOTER ── */
+    .port-footer {
+      background: var(--navy); padding: 40px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .pf-copy { font-size: 0.8rem; color: rgba(255,255,255,0.35); }
+    .pf-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold); color: var(--navy);
+      font-size: 0.82rem; font-weight: 700; letter-spacing: 0.04em;
+      padding: 10px 22px; border-radius: 100px; text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .pf-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav, .port-hero, .port-section { padding-left: 20px; padding-right: 20px; }
+      .port-hero { padding-top: 52px; padding-bottom: 44px; }
+      .port-section { padding-top: 48px; padding-bottom: 48px; }
+      .reel-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+      .port-footer { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo-words">
+    <div class="logo-name">JAZZ <span class="gold">GILL</span></div>
+    <div class="logo-tag">Media</div>
+  </div>
+  <a href="index.html" class="nav-back">← Back to Home</a>
+</nav>
+
+<!-- HERO STRIP -->
+<div class="port-hero">
+  <div class="port-tag">Our Work</div>
+  <h1 class="port-title">Content That <em>Converts</em></h1>
+  <p class="port-sub">Real reels, real results — for real local businesses.</p>
+</div>
+
+<!-- SECTION 1: FOOD -->
+<div class="port-section" id="food">
+  <div class="section-header">
+    <div class="section-cat">Category 01</div>
+    <h2 class="section-title">Food &amp; Hospitality</h2>
+  </div>
+  <div class="reel-grid">
+    <div class="reel-thumb" data-src="work-reel-3.mp4">
+      <video muted loop playsinline><source src="work-reel-3.mp4" type="video/mp4"></video>
+      <div class="play-btn">&#9654;</div>
+      <div class="reel-label">
+        <div class="rl-tag">Content</div>
+        <div class="rl-name">Beirut Grill</div>
+      </div>
+    </div>
+    <div class="reel-thumb placeholder">
+      <div class="placeholder-inner"><div class="ph-icon">🍽️</div><div class="ph-label">Coming Soon</div></div>
+    </div>
+    <div class="reel-thumb placeholder">
+      <div class="placeholder-inner"><div class="ph-icon">🍽️</div><div class="ph-label">Coming Soon</div></div>
+    </div>
+    <div class="reel-thumb placeholder">
+      <div class="placeholder-inner"><div class="ph-icon">🍽️</div><div class="ph-label">Coming Soon</div></div>
+    </div>
+    <div class="reel-thumb placeholder">
+      <div class="placeholder-inner"><div class="ph-icon">🍽️</div><div class="ph-label">Coming Soon</div></div>
+    </div>
+    <div class="reel-thumb placeholder">
+      <div class="placeholder-inner"><div class="ph-icon">🍽️</div><div class="ph-label">Coming Soon</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: HEALTH & SUPPLEMENTS -->
+<div class="port-section" id="health">
+  <div class="section-header">
+    <div class="section-cat">Category 02</div>
+    <h2 class="section-title">Health &amp; Supplements</h2>
+  </div>
+  <div class="reel-grid">
+    <div class="reel-thumb" data-src="work-reel-2.mp4">
+      <video muted loop playsinline><source src="work-reel-2.mp4" type="video/mp4"></video>
+      <div class="play-btn">&#9654;</div>
+      <div class="reel-label">
+        <div class="rl-tag">Paid Ads</div>
+        <div class="rl-name">Anytime Fitness</div>
+      </div>
+    </div>
+    <div class="reel-thumb placeholder">
+      <div class="placeholder-inner"><div class="ph-icon">💪</div><div class="ph-label">Coming Soon</div></div>
+    </div>
+    <div class="reel-thumb placeholder">
+      <div class="placeholder-inner"><div class="ph-icon">💪</div><div class="ph-label">Coming Soon</div></div>
+    </div>
+    <div class="reel-thumb placeholder">
+      <div class="placeholder-inner"><div class="ph-icon">💪</div><div class="ph-label">Coming Soon</div></div>
+    </div>
+    <div class="reel-thumb placeholder">
+      <div class="placeholder-inner"><div class="ph-icon">💪</div><div class="ph-label">Coming Soon</div></div>
+    </div>
+    <div class="reel-thumb placeholder">
+      <div class="placeholder-inner"><div class="ph-icon">💪</div><div class="ph-label">Coming Soon</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: LIFESTYLE -->
+<div class="port-section" id="lifestyle">
+  <div class="section-header">
+    <div class="section-cat">Category 03</div>
+    <h2 class="section-title">Lifestyle</h2>
+  </div>
+  <div class="reel-grid">
+    <div class="reel-thumb" data-src="work-reel.mp4">
+      <video muted loop playsinline><source src="work-reel.mp4" type="video/mp4"></video>
+      <div class="play-btn">&#9654;</div>
+      <div class="reel-label">
+        <div class="rl-tag">Content</div>
+        <div class="rl-name">Jazz Gill Media</div>
+      </div>
+    </div>
+    <div class="reel-thumb" data-src="work-reel-4.mp4">
+      <video muted loop playsinline><source src="work-reel-4.mp4" type="video/mp4"></video>
+      <div class="play-btn">&#9654;</div>
+      <div class="reel-label">
+        <div class="rl-tag">Brand</div>
+        <div class="rl-name">Elevating Education</div>
+      </div>
+    </div>
+    <div class="reel-thumb" data-src="work-reel-5.mp4">
+      <video muted loop playsinline><source src="work-reel-5.mp4" type="video/mp4"></video>
+      <div class="play-btn">&#9654;</div>
+      <div class="reel-label">
+        <div class="rl-tag">Paid Ads</div>
+        <div class="rl-name">Live Brand Promo</div>
+      </div>
+    </div>
+    <div class="reel-thumb placeholder">
+      <div class="placeholder-inner"><div class="ph-icon">✨</div><div class="ph-label">Coming Soon</div></div>
+    </div>
+    <div class="reel-thumb placeholder">
+      <div class="placeholder-inner"><div class="ph-icon">✨</div><div class="ph-label">Coming Soon</div></div>
+    </div>
+    <div class="reel-thumb placeholder">
+      <div class="placeholder-inner"><div class="ph-icon">✨</div><div class="ph-label">Coming Soon</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="port-footer">
+  <div class="pf-copy">© 2025 Jazz Gill Media. All rights reserved.</div>
+  <a href="index.html#contact" class="pf-cta">Work With Us →</a>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <div class="lb-inner">
+    <button class="lb-close" id="lbClose">✕</button>
+    <video id="lbVideo" muted loop playsinline autoplay style="width:100%;height:100%;object-fit:cover;"></video>
+  </div>
+</div>
+
+<script>
+  // Hover preview — play on hover, pause on leave
+  document.querySelectorAll('.reel-thumb:not(.placeholder)').forEach(thumb => {
+    const vid = thumb.querySelector('video');
+    thumb.addEventListener('mouseenter', () => vid.play().catch(() => {}));
+    thumb.addEventListener('mouseleave', () => { vid.pause(); vid.currentTime = 0; });
+
+    // Click → open lightbox
+    thumb.addEventListener('click', () => {
+      const src = thumb.dataset.src;
+      if (!src) return;
+      const lb = document.getElementById('lightbox');
+      const lbVid = document.getElementById('lbVideo');
+      lbVid.src = src;
+      lbVid.play().catch(() => {});
+      lb.classList.add('open');
+    });
+  });
+
+  // Close lightbox
+  document.getElementById('lbClose').addEventListener('click', closeLb);
+  document.getElementById('lightbox').addEventListener('click', e => {
+    if (e.target === e.currentTarget) closeLb();
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
+
+  function closeLb() {
+    const lb = document.getElementById('lightbox');
+    const lbVid = document.getElementById('lbVideo');
+    lb.classList.remove('open');
+    lbVid.pause();
+    lbVid.src = '';
+  }
+</script>
+</body>
+</html>
