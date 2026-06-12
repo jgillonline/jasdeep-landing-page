@@ -429,7 +429,8 @@
     .d4{transition-delay:.32s} .d5{transition-delay:.4s}
 
     /* ── SERVICES ── */
-    .svc-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+    .svc-grid { display:flex; flex-wrap:wrap; gap:22px; justify-content:center; }
+    .svc-grid .svc-card { flex: 1 1 calc(33.333% - 22px); min-width: 260px; max-width: calc(33.333% - 15px); }
     .svc-card {
       background:white; border:1px solid var(--border); border-radius:20px; padding:40px;
       transition:transform 0.45s var(--ease), box-shadow 0.45s var(--ease), border-color 0.3s;
@@ -965,28 +966,41 @@
       <div class="svc-card r d1">
         <div class="svc-icon">📣</div>
         <div class="svc-name">Paid Advertising</div>
-        <p class="svc-desc">Strategic campaigns that put your business in front of buyers ready to act. Every dollar tracked, every campaign optimized toward real results.</p>
+        <p class="svc-desc">Strategic Meta and Google campaigns that put your business in front of buyers ready to act — every penny tracked, every ad optimised for real results.</p>
         <div class="svc-tags">
-          <span class="stag">Meta Ads</span><span class="stag">Google Ads</span>
-          <span class="stag">TikTok Ads</span><span class="stag">Retargeting</span>
+          <span class="stag">Meta Ads</span><span class="stag">Google Ads</span><span class="stag">Retargeting</span>
         </div>
       </div>
       <div class="svc-card r d2">
         <div class="svc-icon">🎬</div>
         <div class="svc-name">Content Creation</div>
-        <p class="svc-desc">Scroll-stopping content that builds your brand, earns trust, and drives action — across every platform your customers actually use.</p>
+        <p class="svc-desc">Scroll-stopping reels and video content that builds your brand, earns trust, and turns viewers into paying customers.</p>
         <div class="svc-tags">
-          <span class="stag">Video Production</span><span class="stag">Photography</span>
-          <span class="stag">Copywriting</span><span class="stag">Social Media</span>
+          <span class="stag">Reels</span><span class="stag">Video Editing</span><span class="stag">Hooks & Captions</span>
         </div>
       </div>
       <div class="svc-card r d3">
         <div class="svc-icon">💻</div>
         <div class="svc-name">Website Design & Build</div>
-        <p class="svc-desc">Fast, beautiful, conversion-focused websites. Not just something that looks good — something that turns visitors into paying customers.</p>
+        <p class="svc-desc">Fast, beautiful, conversion-focused websites and landing pages — built to turn visitors into paying customers from day one.</p>
         <div class="svc-tags">
-          <span class="stag">Landing Pages</span><span class="stag">E-Commerce</span>
-          <span class="stag">CRO</span><span class="stag">SEO-Ready</span>
+          <span class="stag">Landing Pages</span><span class="stag">Business Websites</span><span class="stag">CRO</span>
+        </div>
+      </div>
+      <div class="svc-card r d4">
+        <div class="svc-icon">📱</div>
+        <div class="svc-name">Social Media Management</div>
+        <p class="svc-desc">Consistent, on-brand content posted across your socials so you stay visible, relevant, and top of mind — without lifting a finger.</p>
+        <div class="svc-tags">
+          <span class="stag">Instagram</span><span class="stag">TikTok</span><span class="stag">Facebook</span>
+        </div>
+      </div>
+      <div class="svc-card r d5">
+        <div class="svc-icon">⭐</div>
+        <div class="svc-name">Google Review Growth</div>
+        <p class="svc-desc">More 5-star reviews, higher local rankings, and a reputation that does your selling for you before a customer even calls.</p>
+        <div class="svc-tags">
+          <span class="stag">Review Generation</span><span class="stag">Local SEO</span><span class="stag">Reputation</span>
         </div>
       </div>
     </div>
