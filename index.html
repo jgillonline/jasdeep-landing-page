@@ -649,6 +649,17 @@
       background:rgba(255,255,255,0.08); color:rgba(255,255,255,0.5);
     }
 
+    /* Pricing bridge divider */
+    .pricing-bridge {
+      display: flex; align-items: center; gap: 20px;
+      margin: 48px auto 40px; max-width: 480px;
+    }
+    .pb-line { flex: 1; height: 1px; background: var(--border); }
+    .pb-text {
+      font-size: 0.8rem; font-weight: 600; color: rgba(17,17,17,0.4);
+      letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap;
+    }
+
     /* Jazz Growth Pro Banner */
     .pro-banner {
       background:var(--navy); border-radius:20px; padding:40px 44px;
@@ -1111,6 +1122,13 @@
         <a href="#contact" class="pc-btn pc-btn-wh" style="margin-top:16px">Get Started</a>
       </div>
 
+    </div>
+
+    <!-- Bridge -->
+    <div class="pricing-bridge r">
+      <div class="pb-line"></div>
+      <div class="pb-text">Or pick exactly what you need</div>
+      <div class="pb-line"></div>
     </div>
 
     <!-- One-Off Services -->
