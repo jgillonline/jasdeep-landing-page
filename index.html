@@ -1332,10 +1332,17 @@
       background: white;
       border: 1px solid rgba(15,23,42,0.08);
     }
-    .results-video-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
+    .results-video-slider {
+      position: relative;
+    }
+    .results-video-frame {
+      overflow: hidden;
+      border-radius: 24px;
+    }
+    .results-video-track {
+      display: flex;
+      transition: transform 0.4s var(--ease);
+      will-change: transform;
     }
     .results-video-tile {
       position: relative;
@@ -1345,6 +1352,11 @@
       background: #141414;
       box-shadow: 0 18px 44px rgba(15,23,42,0.12);
       border: 1px solid rgba(15,23,42,0.08);
+      flex: 0 0 calc((100% - 42px) / 4);
+      margin-right: 14px;
+    }
+    .results-video-tile:last-child {
+      margin-right: 0;
     }
     .results-video-tile video {
       width: 100%;
@@ -1370,6 +1382,36 @@
     .results-video-label span {
       font-size: 0.72rem;
       color: rgba(255,255,255,0.74);
+    }
+    .results-video-controls {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .results-video-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid rgba(15,23,42,0.16);
+      background: white;
+      color: var(--navy);
+      font-size: 1.1rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: transform 0.2s var(--ease), background 0.2s, color 0.2s;
+    }
+    .results-video-btn:hover {
+      transform: translateY(-1px);
+      background: var(--navy);
+      color: white;
+    }
+    .results-video-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      transform: none;
+      background: #f3f4f6;
+      color: #9ca3af;
     }
 
     .guarantee-block {
@@ -1982,7 +2024,7 @@
       .growth-compare { padding: 0 40px; }
       .growth-compare-grid { grid-template-columns: 1fr; }
       .results-mosaic { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .results-video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .results-video-tile { flex-basis: calc((100% - 14px) / 2); }
       .guarantee-grid { grid-template-columns:1fr; }
       .pc.feat { transform:none; }
       .faq-layout { grid-template-columns:1fr; }
@@ -2004,7 +2046,7 @@
       .results-gallery { padding: 28px 20px; }
       .results-mosaic { grid-template-columns: 1fr; }
       .results-tile.span-2 { grid-column: span 1; }
-      .results-video-grid { grid-template-columns: 1fr 1fr; }
+      .results-video-tile { flex-basis: calc((100% - 14px) / 2); }
       .guarantee-block { padding:26px 20px; }
       .faq-side-card { padding: 24px 20px; }
       .faq-bottom-cta { padding: 22px 20px; }
@@ -2392,54 +2434,62 @@
               <div class="results-row-label">Short-Form Videos</div>
               <div class="results-row-meta"></div>
             </div>
-            <div class="results-video-grid">
-              <div class="results-video-tile">
-                <video muted loop playsinline autoplay>
-                  <source src="41ea0241e5a14db3b47a80faaa0a7086.mp4" type="video/mp4">
-                </video>
-                <div class="results-video-label"><strong>Lead Gen Creative</strong><span>Paid ads + landing page</span></div>
+            <div class="results-video-slider" id="shortFormSlider">
+              <div class="results-video-frame">
+                <div class="results-video-track">
+                  <div class="results-video-tile">
+                    <video muted loop playsinline autoplay>
+                      <source src="41ea0241e5a14db3b47a80faaa0a7086.mp4" type="video/mp4">
+                    </video>
+                    <div class="results-video-label"><strong>Lead Gen Creative</strong><span>Paid ads + landing page</span></div>
+                  </div>
+                  <div class="results-video-tile">
+                    <video muted loop playsinline autoplay>
+                      <source src="5448abffa78d43be81137259e0267755.mp4" type="video/mp4">
+                    </video>
+                    <div class="results-video-label"><strong>Website + Ads</strong><span>Local business growth</span></div>
+                  </div>
+                  <div class="results-video-tile">
+                    <video muted loop playsinline autoplay>
+                      <source src="aceaaaba6cbb40b9a3b3d7672c12eca9.mp4" type="video/mp4">
+                    </video>
+                    <div class="results-video-label"><strong>Brand Launch</strong><span>Creative video</span></div>
+                  </div>
+                  <div class="results-video-tile">
+                    <video muted loop playsinline autoplay>
+                      <source src="work-reel.mp4" type="video/mp4">
+                    </video>
+                    <div class="results-video-label"><strong>Campaign Spotlight</strong><span>Performance reel</span></div>
+                  </div>
+                  <div class="results-video-tile">
+                    <video muted loop playsinline autoplay>
+                      <source src="work-reel-2.mp4" type="video/mp4">
+                    </video>
+                    <div class="results-video-label"><strong>Fitness Promo</strong><span>Short-form ad creative</span></div>
+                  </div>
+                  <div class="results-video-tile">
+                    <video muted loop playsinline autoplay>
+                      <source src="work-reel-3.mp4" type="video/mp4">
+                    </video>
+                    <div class="results-video-label"><strong>Restaurant Feature</strong><span>Hospitality reel</span></div>
+                  </div>
+                  <div class="results-video-tile">
+                    <video muted loop playsinline autoplay>
+                      <source src="work-reel-4.mp4" type="video/mp4">
+                    </video>
+                    <div class="results-video-label"><strong>Education Campaign</strong><span>Brand awareness clip</span></div>
+                  </div>
+                  <div class="results-video-tile">
+                    <video muted loop playsinline autoplay>
+                      <source src="work-reel-5.mp4" type="video/mp4">
+                    </video>
+                    <div class="results-video-label"><strong>Live Brand Promo</strong><span>Performance-driven creative</span></div>
+                  </div>
+                </div>
               </div>
-              <div class="results-video-tile">
-                <video muted loop playsinline autoplay>
-                  <source src="5448abffa78d43be81137259e0267755.mp4" type="video/mp4">
-                </video>
-                <div class="results-video-label"><strong>Website + Ads</strong><span>Local business growth</span></div>
-              </div>
-              <div class="results-video-tile">
-                <video muted loop playsinline autoplay>
-                  <source src="aceaaaba6cbb40b9a3b3d7672c12eca9.mp4" type="video/mp4">
-                </video>
-                <div class="results-video-label"><strong>Brand Launch</strong><span>Creative video</span></div>
-              </div>
-              <div class="results-video-tile">
-                <video muted loop playsinline autoplay>
-                  <source src="work-reel.mp4" type="video/mp4">
-                </video>
-                <div class="results-video-label"><strong>Campaign Spotlight</strong><span>Performance reel</span></div>
-              </div>
-              <div class="results-video-tile">
-                <video muted loop playsinline autoplay>
-                  <source src="work-reel-2.mp4" type="video/mp4">
-                </video>
-                <div class="results-video-label"><strong>Fitness Promo</strong><span>Short-form ad creative</span></div>
-              </div>
-              <div class="results-video-tile">
-                <video muted loop playsinline autoplay>
-                  <source src="work-reel-3.mp4" type="video/mp4">
-                </video>
-                <div class="results-video-label"><strong>Restaurant Feature</strong><span>Hospitality reel</span></div>
-              </div>
-              <div class="results-video-tile">
-                <video muted loop playsinline autoplay>
-                  <source src="work-reel-4.mp4" type="video/mp4">
-                </video>
-                <div class="results-video-label"><strong>Education Campaign</strong><span>Brand awareness clip</span></div>
-              </div>
-              <div class="results-video-tile">
-                <video muted loop playsinline autoplay>
-                  <source src="work-reel-5.mp4" type="video/mp4">
-                </video>
-                <div class="results-video-label"><strong>Live Brand Promo</strong><span>Performance-driven creative</span></div>
+              <div class="results-video-controls">
+                <button type="button" class="results-video-btn" data-slide="prev" aria-label="Previous videos">&#8592;</button>
+                <button type="button" class="results-video-btn" data-slide="next" aria-label="Next videos">&#8594;</button>
               </div>
             </div>
           </section>
@@ -2963,6 +3013,53 @@
       });
     });
   });
+
+  /* SHORT-FORM VIDEO SLIDER */
+  const shortFormSlider = document.getElementById('shortFormSlider');
+  if (shortFormSlider) {
+    const track = shortFormSlider.querySelector('.results-video-track');
+    const slides = Array.from(shortFormSlider.querySelectorAll('.results-video-tile'));
+    const prevBtn = shortFormSlider.querySelector('[data-slide="prev"]');
+    const nextBtn = shortFormSlider.querySelector('[data-slide="next"]');
+    let currentSlide = 0;
+    let visibleSlides = 4;
+
+    function getVisibleSlides() {
+      if (window.innerWidth <= 1024) return 2;
+      return 4;
+    }
+
+    function updateSlider() {
+      visibleSlides = getVisibleSlides();
+      const maxSlide = Math.max(0, slides.length - visibleSlides);
+      currentSlide = Math.min(currentSlide, maxSlide);
+
+      const first = slides[0];
+      if (!first) return;
+
+      const tileWidth = first.getBoundingClientRect().width;
+      const tileGap = 14;
+      const offset = currentSlide * (tileWidth + tileGap);
+      track.style.transform = `translateX(${-offset}px)`;
+
+      prevBtn.disabled = currentSlide === 0;
+      nextBtn.disabled = currentSlide >= maxSlide;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      currentSlide = Math.max(0, currentSlide - 1);
+      updateSlider();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      const maxSlide = Math.max(0, slides.length - visibleSlides);
+      currentSlide = Math.min(maxSlide, currentSlide + 1);
+      updateSlider();
+    });
+
+    window.addEventListener('resize', updateSlider);
+    updateSlider();
+  }
 
   /* FORM */
   /* RESULT CARD CAROUSEL */
