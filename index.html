@@ -626,214 +626,83 @@
     /* ── SERVICES ── */
     #services { background: var(--surface); }
     #services .wrap { padding-top: 80px; padding-bottom: 80px; }
-    .svc-process-line {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      margin: 0 auto 34px;
-      color: rgba(17,17,17,0.42);
-      font-size: 0.76rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-    .svc-process-line span {
-      display: inline-flex;
-      align-items: center;
-      gap: 16px;
-    }
-    .svc-process-line span:not(:last-child)::after {
-      content: '→';
-      color: var(--gold);
-      font-size: 1rem;
-      letter-spacing: 0;
-    }
     .svc-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 22px;
-      margin-top: 0;
-      position: relative;
+      gap: 20px;
     }
     .svc-card {
-      background: white; border-radius: 24px; padding: 34px 30px 30px;
+      background: white;
+      border-radius: 18px;
+      padding: 28px 24px;
       border: 1px solid var(--border);
-      position: relative; overflow: hidden;
-      transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.3s;
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.2s;
     }
-    .svc-card::after {
-      content: ''; position: absolute; inset: 0;
-      border-radius: 24px;
-      background: linear-gradient(135deg, rgba(201,160,85,0.06) 0%, transparent 60%);
-      opacity: 0; transition: opacity 0.4s;
-    }
-    .svc-card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(15,10,0,0.1), 0 4px 16px rgba(201,160,85,0.08); border-color: var(--gold-100); }
-    .svc-card:hover::after { opacity: 1; }
-    .svc-card:not(:last-child)::before {
-      content: '→';
-      position: absolute;
-      top: 44px;
-      right: -13px;
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      background: var(--gold-50);
-      color: var(--gold-dark);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 3;
-      box-shadow: 0 8px 20px rgba(201,160,85,0.18);
-      border: 1px solid var(--gold-100);
-    }
-    .svc-card-num {
-      position: absolute; top: 18px; right: 22px;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 3.4rem; font-weight: 700; line-height: 1;
-      color: var(--gold); opacity: 0.08;
-      transition: opacity 0.4s;
-      pointer-events: none;
-    }
-    .svc-card:hover .svc-card-num { opacity: 0.18; }
+    .svc-card:hover { transform: translateY(-4px); box-shadow: 0 16px 34px rgba(15,10,0,0.08); border-color: var(--gold-100); }
     .svc-icon {
-      width: 56px; height: 56px;
-      background: var(--gold-50); border-radius: 16px;
+      width: 72px;
+      height: 72px;
+      background: var(--gold-50);
+      border-radius: 14px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem; margin-bottom: 22px;
+      margin-bottom: 16px;
       border: 1px solid var(--gold-100);
-      transition: transform 0.4s var(--ease), background 0.3s;
-      color: var(--gold-dark);
-      font-weight: 800;
-      letter-spacing: 0.08em;
+      overflow: hidden;
     }
-    .svc-card:hover .svc-icon { transform: scale(1.08) rotate(-6deg); background: var(--gold-100); }
+    .svc-icon img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      display: block;
+    }
     .svc-step {
-      font-size: 0.74rem;
+      font-size: 0.68rem;
       font-weight: 700;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--gold-dark);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
-    .svc-name { font-size: 1.4rem; font-weight: 800; color: var(--navy); margin-bottom: 10px; letter-spacing: -0.03em; line-height: 1.12; }
-    .svc-desc { font-size: 0.92rem; color: var(--grey); line-height: 1.75; margin-bottom: 20px; }
-    .svc-meta {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      margin-bottom: 18px;
-      flex-wrap: wrap;
-    }
-    .svc-timeline,
-    .svc-proof {
-      display: inline-flex;
-      align-items: center;
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-    }
-    .svc-timeline {
-      background: var(--gold-50);
-      color: var(--gold-dark);
-      border: 1px solid var(--gold-100);
-    }
-    .svc-proof {
-      background: var(--border-light);
-      color: var(--slate);
-    }
+    .svc-name { font-size: 1.3rem; font-weight: 800; color: var(--navy); margin-bottom: 10px; letter-spacing: -0.02em; line-height: 1.2; }
+    .svc-desc { font-size: 0.9rem; color: var(--grey); line-height: 1.7; margin-bottom: 16px; }
     .svc-deliverables {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      margin-bottom: 18px;
+      gap: 8px;
     }
     .svc-deliverables li {
       display: flex;
       align-items: flex-start;
-      gap: 10px;
+      gap: 8px;
       color: var(--slate);
-      font-size: 0.88rem;
-      line-height: 1.65;
+      font-size: 0.86rem;
+      line-height: 1.55;
     }
     .svc-deliverables li::before {
       content: '✓';
-      width: 18px;
-      height: 18px;
+      width: 16px;
+      height: 16px;
       border-radius: 50%;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       background: var(--gold-50);
       color: var(--gold-dark);
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       font-weight: 800;
       flex-shrink: 0;
       margin-top: 2px;
     }
-    .svc-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .svc-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 14px;
+    }
     .stag {
       background:var(--border-light); color:var(--slate);
       padding:4px 10px; border-radius:6px; font-size:0.72rem; font-weight:600;
-    }
-    .svc-next {
-      margin-top: 28px;
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 28px 30px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      flex-wrap: wrap;
-      box-shadow: var(--shadow);
-    }
-    .svc-next-copy h3 {
-      font-size: 1.4rem;
-      letter-spacing: -0.03em;
-      color: var(--navy);
-      margin-bottom: 10px;
-    }
-    .svc-next-steps {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      color: var(--grey);
-      font-size: 0.88rem;
-      font-weight: 600;
-    }
-    .svc-next-steps span {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .svc-next-steps strong {
-      color: var(--navy);
-      font-weight: 800;
-    }
-    .svc-next-cta {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 24px;
-      border-radius: 999px;
-      background: var(--navy);
-      color: white;
-      text-decoration: none;
-      font-size: 0.84rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.2s;
-      box-shadow: 0 16px 30px rgba(17,17,17,0.16);
-    }
-    .svc-next-cta:hover {
-      transform: translateY(-2px);
-      background: #1E293B;
     }
 
     /* ── WORK ── */
@@ -2019,7 +1888,7 @@
       .hero-actions { justify-content:center; flex-direction:column; align-items:center; }
       .hero-trust { justify-content:center; }
       .hero-visual { display:none; }
-      .svc-card { min-width: 100%; max-width: 100%; }
+      .svc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .price-grid { grid-template-columns:repeat(2, minmax(0, 1fr)); }
       .growth-compare { padding: 0 40px; }
       .growth-compare-grid { grid-template-columns: 1fr; }
@@ -2036,6 +1905,10 @@
       nav { padding:0 20px; }
       .nav-links { display:none; }
       .wrap { padding:64px 24px; }
+      .svc-grid { grid-template-columns: 1fr; gap: 14px; }
+      .svc-card { padding: 24px 20px; }
+      .svc-icon { width: 64px; height: 64px; }
+      .svc-icon img { width: 40px; height: 40px; }
       #hero { padding:100px 24px 64px; }
       #trusted { padding:30px 24px; }
       #stats { padding:60px 24px; }
@@ -2202,22 +2075,14 @@
   <div class="marquee-wrap">
     <div class="marquee-track">
       <span class="tl">Anytime Fitness Acton</span>
-      <span class="tl">Elevating Education</span>
-      <span class="tl">Beirut Grill</span>
-      <span class="tl">Live Brand Promotions</span>
-      <span class="tl">Comfort Kitchens</span>
-      <span class="tl">The Kings Head</span>
-      <span class="tl">3c'z Boneless Chicken</span>
       <span class="tl">Dropkick Agency</span>
+      <span class="tl">Elevating Education</span>
+      <span class="tl">The Kings Head Pub</span>
       <!-- duplicate for seamless loop -->
       <span class="tl">Anytime Fitness Acton</span>
-      <span class="tl">Elevating Education</span>
-      <span class="tl">Beirut Grill</span>
-      <span class="tl">Live Brand Promotions</span>
-      <span class="tl">Comfort Kitchens</span>
-      <span class="tl">The Kings Head</span>
-      <span class="tl">3c'z Boneless Chicken</span>
       <span class="tl">Dropkick Agency</span>
+      <span class="tl">Elevating Education</span>
+      <span class="tl">The Kings Head Pub</span>
     </div>
   </div>
 </div>
@@ -2227,86 +2092,55 @@
   <div class="wrap">
     <div class="sec-head r">
       <span class="sec-tag">What We Do</span>
-      <h2 class="sec-title">How We Turn<br>Traffic Into Customers</h2>
-      <p class="sec-sub">We build the systems that attract qualified leads, convert them into customers, and help your business scale predictably.</p>
-    </div>
-    <div class="svc-process-line r d1">
-      <span>Foundation</span>
-      <span>Demand</span>
-      <span>Scale</span>
+      <h2 class="sec-title">Simple, Effective Marketing Services</h2>
+      <p class="sec-sub">Three clear service areas to help your business grow: content, website with paid ads, and social media management.</p>
     </div>
     <div class="svc-grid">
       <div class="svc-card r d1">
-        <div class="svc-card-num">01</div>
-        <div class="svc-icon">WF</div>
-        <div class="svc-step">Build the Foundation</div>
-        <div class="svc-name">Launch a Lead-Generating Website</div>
-        <p class="svc-desc">Turn visitors into booked calls with a conversion-focused website, landing page setup, and the systems needed to track every enquiry properly.</p>
-        <div class="svc-meta">
-          <span class="svc-timeline">Week 1-2</span>
-          <span class="svc-proof">8-15% landing page conversion rate</span>
-        </div>
+        <div class="svc-icon"><img src="assets/services/content.svg" alt="Content service"></div>
+        <div class="svc-step">Service 01</div>
+        <div class="svc-name">Content</div>
+        <p class="svc-desc">Professional content designed to build trust, increase engagement, and support your sales goals.</p>
         <ul class="svc-deliverables">
-          <li>Website or landing pages built to convert</li>
-          <li>Conversion tracking and analytics setup</li>
-          <li>CRM or lead capture integration</li>
-          <li>Offer structure and enquiry flow optimisation</li>
+          <li>Short-form video content and reels</li>
+          <li>Promotional and offer-based creative</li>
+          <li>Branded content planning and scripting</li>
+          <li>Content editing and publishing support</li>
         </ul>
         <div class="svc-tags">
-          <span class="stag">Website</span><span class="stag">Landing Pages</span><span class="stag">Tracking</span><span class="stag">CRM Setup</span>
+          <span class="stag">Video</span><span class="stag">Creative</span><span class="stag">Brand Content</span>
         </div>
       </div>
       <div class="svc-card r d2">
-        <div class="svc-card-num">02</div>
-        <div class="svc-icon">AD</div>
-        <div class="svc-step">Generate Demand</div>
-        <div class="svc-name">Get Your First Consistent Leads</div>
-        <p class="svc-desc">We launch paid campaigns and lead generation systems designed to bring in the right traffic and turn attention into qualified enquiries.</p>
-        <div class="svc-meta">
-          <span class="svc-timeline">Week 3-4</span>
-          <span class="svc-proof">Helped local businesses generate 200+ leads</span>
-        </div>
+        <div class="svc-icon"><img src="assets/services/website.svg" alt="Website service"></div>
+        <div class="svc-step">Service 02</div>
+        <div class="svc-name">Website & Paid Ads</div>
+        <p class="svc-desc">A high-converting website combined with targeted paid ads to drive quality traffic and turn clicks into enquiries.</p>
         <ul class="svc-deliverables">
-          <li>Paid ads built around local lead generation</li>
-          <li>Audience testing, retargeting, and optimisation</li>
-          <li>Content creation for ads and demand capture</li>
-          <li>Monthly reporting focused on leads and ROI</li>
+          <li>Website design and responsive development</li>
+          <li>Landing pages for specific services or campaigns</li>
+          <li>Meta ad campaign setup and management</li>
+          <li>Audience targeting, retargeting, and optimisation</li>
         </ul>
         <div class="svc-tags">
-          <span class="stag">Paid Ads</span><span class="stag">Lead Generation</span><span class="stag">Retargeting</span><span class="stag">Optimisation</span>
+          <span class="stag">Design</span><span class="stag">Paid Ads</span><span class="stag">Lead Generation</span>
         </div>
       </div>
       <div class="svc-card r d3">
-        <div class="svc-card-num">03</div>
-        <div class="svc-icon">SC</div>
-        <div class="svc-step">Scale & Retain</div>
-        <div class="svc-name">Stay Top-of-Mind Until They're Ready to Buy</div>
-        <p class="svc-desc">Once the system is working, we scale it with consistent content, social media presence, reporting, and optimisation so your business keeps compounding.</p>
-        <div class="svc-meta">
-          <span class="svc-timeline">Month 2+</span>
-          <span class="svc-proof">30+ pieces of content per month</span>
-        </div>
+        <div class="svc-icon"><img src="assets/services/social-media.svg" alt="Social media management service"></div>
+        <div class="svc-step">Service 03</div>
+        <div class="svc-name">Social Media Management</div>
+        <p class="svc-desc">Consistent social media execution to keep your brand visible, build trust, and stay top-of-mind with your audience.</p>
         <ul class="svc-deliverables">
-          <li>Content creation across your key channels</li>
-          <li>Consistent posting on 3+ platforms</li>
-          <li>Ongoing optimisation and performance reporting</li>
-          <li>Retention-focused messaging and nurture support</li>
+          <li>Monthly social posting and account management</li>
+          <li>Content scheduling and community engagement</li>
+          <li>Caption writing and brand voice consistency</li>
+          <li>Performance tracking and clear reporting</li>
         </ul>
         <div class="svc-tags">
-          <span class="stag">Content Creation</span><span class="stag">Social Media</span><span class="stag">Reporting</span><span class="stag">Retention</span>
+          <span class="stag">Social Media</span><span class="stag">Content Planning</span><span class="stag">Reporting</span>
         </div>
       </div>
-    </div>
-    <div class="svc-next r d3">
-      <div class="svc-next-copy">
-        <h3>What Happens Next?</h3>
-        <div class="svc-next-steps">
-          <span><strong>1.</strong> Book a Strategy Call</span>
-          <span><strong>2.</strong> Receive Your Growth Plan</span>
-          <span><strong>3.</strong> Launch in 14 Days</span>
-        </div>
-      </div>
-      <a href="#contact" class="svc-next-cta">Book Your Free Strategy Call</a>
     </div>
   </div>
 </div>
@@ -2319,294 +2153,138 @@
         <span class="sec-tag">Our Work</span>
         <h2 class="sec-title" style="margin-bottom:0">Results We're<br>Proud Of</h2>
       </div>
-      <p class="sec-sub r d2" style="max-width:760px">A cleaner showcase of websites, branding, and short-form creative. Empty tiles are left in place so you can drop in more service examples as they are ready.</p>
+      <p class="sec-sub r d2" style="max-width:760px">A simple reel slideshow showing short-form content across different campaign goals.</p>
     </div>
 
     <div class="results-gallery r d2">
       <div class="results-gallery-head">
-        <p class="results-gallery-sub">Browse websites, branding, and short-form creative below.</p>
+        <p class="results-gallery-sub">Campaign types include lead generation, brand awareness, retargeting, offers, and social proof.</p>
       </div>
 
       <div class="results-filters">
-        <button class="results-filter active" data-results="featured">Featured</button>
-        <button class="results-filter" data-results="websites">Websites</button>
-        <button class="results-filter" data-results="branding">Branding</button>
+        <button class="results-filter active" type="button">Lead Generation</button>
+        <button class="results-filter" type="button">Brand Awareness</button>
+        <button class="results-filter" type="button">Retargeting</button>
+        <button class="results-filter" type="button">Offer Campaigns</button>
+        <button class="results-filter" type="button">Social Proof</button>
       </div>
 
-      <div class="results-panel active" data-results-panel="featured">
-        <div class="results-showcase">
-          <section class="results-group">
-            <div class="results-row-head">
-              <div class="results-row-label">Websites</div>
-              <div class="results-row-meta"></div>
+      <div class="results-video-slider" id="shortFormSlider">
+        <div class="results-video-frame">
+          <div class="results-video-track">
+            <div class="results-video-tile">
+              <video muted loop playsinline autoplay>
+                <source src="41ea0241e5a14db3b47a80faaa0a7086.mp4" type="video/mp4">
+              </video>
+              <div class="results-video-label"><strong>Lead Generation</strong><span>Enquiry-focused ad creative</span></div>
             </div>
-            <div class="results-mosaic">
-              <article class="results-tile span-2">
-                <div class="browser-chrome"><span></span><span></span><span></span></div>
-                <div class="browser-body">
-                  <div class="browser-stack">
-                    <div class="browser-line long"></div>
-                    <div class="browser-line"></div>
-                    <div class="browser-shot"></div>
-                    <div class="browser-mini-grid">
-                      <div class="browser-mini"></div>
-                      <div class="browser-mini"></div>
-                      <div class="browser-mini"></div>
-                    </div>
-                  </div>
-                  <div class="browser-copy">
-                    <div class="browser-eyebrow">Website build</div>
-                    <h4>Lead generation landing page</h4>
-                    <p>Use this slot for a homepage or landing page screenshot that shows the offer, layout, and enquiry flow.</p>
-                  </div>
-                </div>
-              </article>
-              <article class="results-tile fill soft">
-                <div class="browser-copy">
-                  <div class="browser-eyebrow">Website refresh</div>
-                  <h4>Consultation-focused redesign</h4>
-                  <p>Ideal for a before-and-after story with stronger messaging, cleaner structure, and more booked calls.</p>
-                </div>
-              </article>
-              <article class="results-tile soft">
-                <div class="results-empty">
-                  <strong>Empty slot</strong>
-                  <h4>Add another website example</h4>
-                  <p>Drop in another service page, landing page, or full website project to make this row feel complete.</p>
-                  <div class="results-service-tags">
-                    <span>Service page</span>
-                    <span>Landing page</span>
-                    <span>Before / after</span>
-                  </div>
-                </div>
-              </article>
+            <div class="results-video-tile">
+              <video muted loop playsinline autoplay>
+                <source src="5448abffa78d43be81137259e0267755.mp4" type="video/mp4">
+              </video>
+              <div class="results-video-label"><strong>Website + Ads Campaign</strong><span>Traffic to landing page</span></div>
             </div>
-          </section>
-
-          <section class="results-group">
-            <div class="results-row-head">
-              <div class="results-row-label">Branding</div>
-              <div class="results-row-meta"></div>
+            <div class="results-video-tile">
+              <video muted loop playsinline autoplay>
+                <source src="aceaaaba6cbb40b9a3b3d7672c12eca9.mp4" type="video/mp4">
+              </video>
+              <div class="results-video-label"><strong>Brand Awareness</strong><span>Reach and recall creative</span></div>
             </div>
-            <div class="results-mosaic">
-              <article class="results-tile brand-tile tall">
-                <div class="brand-mark">Whitby<br>health</div>
-                <div class="brand-copy">
-                  <h4>Brand identity concept</h4>
-                  <p>Use this space for logo work, typography systems, or packaging mockups.</p>
-                </div>
-              </article>
-              <article class="results-tile dark tall fill">
-                <div class="brand-copy" style="position:static">
-                  <h4>Signage and visual systems</h4>
-                  <p>Perfect for exterior signage, vehicle graphics, or branded installation photography.</p>
-                </div>
-              </article>
-              <article class="results-tile soft">
-                <div class="results-empty">
-                  <strong>Empty slot</strong>
-                  <h4>Add a packaging or print project</h4>
-                  <p>Use this tile for menus, flyers, business cards, packaging, or any service-specific branding proof.</p>
-                  <div class="results-service-tags">
-                    <span>Packaging</span>
-                    <span>Print</span>
-                    <span>Signage</span>
-                  </div>
-                </div>
-              </article>
-              <article class="results-tile soft">
-                <div class="results-empty">
-                  <strong>Empty slot</strong>
-                  <h4>Add another brand case study</h4>
-                  <p>Keep this open for a future identity system, social kit, or campaign artwork example.</p>
-                  <div class="results-service-tags">
-                    <span>Identity</span>
-                    <span>Social kit</span>
-                    <span>Campaign art</span>
-                  </div>
-                </div>
-              </article>
+            <div class="results-video-tile">
+              <video muted loop playsinline autoplay>
+                <source src="work-reel.mp4" type="video/mp4">
+              </video>
+              <div class="results-video-label"><strong>Retargeting</strong><span>Warm audience follow-up</span></div>
             </div>
-          </section>
-
-          <section class="results-group">
-            <div class="results-row-head">
-              <div class="results-row-label">Short-Form Videos</div>
-              <div class="results-row-meta"></div>
+            <div class="results-video-tile">
+              <video muted loop playsinline autoplay>
+                <source src="work-reel-2.mp4" type="video/mp4">
+              </video>
+              <div class="results-video-label"><strong>Offer Campaign</strong><span>Promotion-driven reel</span></div>
             </div>
-            <div class="results-video-slider" id="shortFormSlider">
-              <div class="results-video-frame">
-                <div class="results-video-track">
-                  <div class="results-video-tile">
-                    <video muted loop playsinline autoplay>
-                      <source src="41ea0241e5a14db3b47a80faaa0a7086.mp4" type="video/mp4">
-                    </video>
-                    <div class="results-video-label"><strong>Lead Gen Creative</strong><span>Paid ads + landing page</span></div>
-                  </div>
-                  <div class="results-video-tile">
-                    <video muted loop playsinline autoplay>
-                      <source src="5448abffa78d43be81137259e0267755.mp4" type="video/mp4">
-                    </video>
-                    <div class="results-video-label"><strong>Website + Ads</strong><span>Local business growth</span></div>
-                  </div>
-                  <div class="results-video-tile">
-                    <video muted loop playsinline autoplay>
-                      <source src="aceaaaba6cbb40b9a3b3d7672c12eca9.mp4" type="video/mp4">
-                    </video>
-                    <div class="results-video-label"><strong>Brand Launch</strong><span>Creative video</span></div>
-                  </div>
-                  <div class="results-video-tile">
-                    <video muted loop playsinline autoplay>
-                      <source src="work-reel.mp4" type="video/mp4">
-                    </video>
-                    <div class="results-video-label"><strong>Campaign Spotlight</strong><span>Performance reel</span></div>
-                  </div>
-                  <div class="results-video-tile">
-                    <video muted loop playsinline autoplay>
-                      <source src="work-reel-2.mp4" type="video/mp4">
-                    </video>
-                    <div class="results-video-label"><strong>Fitness Promo</strong><span>Short-form ad creative</span></div>
-                  </div>
-                  <div class="results-video-tile">
-                    <video muted loop playsinline autoplay>
-                      <source src="work-reel-3.mp4" type="video/mp4">
-                    </video>
-                    <div class="results-video-label"><strong>Restaurant Feature</strong><span>Hospitality reel</span></div>
-                  </div>
-                  <div class="results-video-tile">
-                    <video muted loop playsinline autoplay>
-                      <source src="work-reel-4.mp4" type="video/mp4">
-                    </video>
-                    <div class="results-video-label"><strong>Education Campaign</strong><span>Brand awareness clip</span></div>
-                  </div>
-                  <div class="results-video-tile">
-                    <video muted loop playsinline autoplay>
-                      <source src="work-reel-5.mp4" type="video/mp4">
-                    </video>
-                    <div class="results-video-label"><strong>Live Brand Promo</strong><span>Performance-driven creative</span></div>
-                  </div>
-                </div>
-              </div>
-              <div class="results-video-controls">
-                <button type="button" class="results-video-btn" data-slide="prev" aria-label="Previous videos">&#8592;</button>
-                <button type="button" class="results-video-btn" data-slide="next" aria-label="Next videos">&#8594;</button>
-              </div>
+            <div class="results-video-tile">
+              <video muted loop playsinline autoplay>
+                <source src="work-reel-3.mp4" type="video/mp4">
+              </video>
+              <div class="results-video-label"><strong>Social Proof</strong><span>Results and testimonial style</span></div>
             </div>
-          </section>
+            <div class="results-video-tile">
+              <video muted loop playsinline autoplay>
+                <source src="work-reel-4.mp4" type="video/mp4">
+              </video>
+              <div class="results-video-label"><strong>Awareness Campaign</strong><span>Education audience creative</span></div>
+            </div>
+            <div class="results-video-tile">
+              <video muted loop playsinline autoplay>
+                <source src="work-reel-5.mp4" type="video/mp4">
+              </video>
+              <div class="results-video-label"><strong>Conversion Push</strong><span>Direct response creative</span></div>
+            </div>
+            <div class="results-video-tile">
+              <video muted loop playsinline autoplay>
+                <source src="copy_259D127E-FEA9-46DC-8A8C-DC066812851A.mov" type="video/mp4">
+              </video>
+              <div class="results-video-label"><strong>Campaign Content</strong><span>Reel 1</span></div>
+            </div>
+            <div class="results-video-tile">
+              <video muted loop playsinline autoplay>
+                <source src="copy_28BD6E21-98E4-443C-A12B-86643B7C9B75.mov" type="video/mp4">
+              </video>
+              <div class="results-video-label"><strong>Campaign Content</strong><span>Reel 2</span></div>
+            </div>
+            <div class="results-video-tile">
+              <video muted loop playsinline autoplay>
+                <source src="copy_2B130A09-18C1-4239-ABFE-811F198ED619.mov" type="video/mp4">
+              </video>
+              <div class="results-video-label"><strong>Campaign Content</strong><span>Reel 3</span></div>
+            </div>
+            <div class="results-video-tile">
+              <video muted loop playsinline autoplay>
+                <source src="copy_40B3FEC9-326E-46B8-B16C-0153D07BD865.mov" type="video/mp4">
+              </video>
+              <div class="results-video-label"><strong>Campaign Content</strong><span>Reel 4</span></div>
+            </div>
+            <div class="results-video-tile">
+              <video muted loop playsinline autoplay>
+                <source src="copy_48C7C54F-66B8-4F16-9DC9-1D0A9C879E98.mov" type="video/mp4">
+              </video>
+              <div class="results-video-label"><strong>Campaign Content</strong><span>Reel 5</span></div>
+            </div>
+            <div class="results-video-tile">
+              <video muted loop playsinline autoplay>
+                <source src="copy_4AA39DA7-0212-430E-A5E7-8B6D312FBF78.mov" type="video/mp4">
+              </video>
+              <div class="results-video-label"><strong>Campaign Content</strong><span>Reel 6</span></div>
+            </div>
+            <div class="results-video-tile">
+              <video muted loop playsinline autoplay>
+                <source src="copy_71130786-4B88-4606-B562-9CFA3F7DB347.mov" type="video/mp4">
+              </video>
+              <div class="results-video-label"><strong>Campaign Content</strong><span>Reel 7</span></div>
+            </div>
+            <div class="results-video-tile">
+              <video muted loop playsinline autoplay>
+                <source src="copy_7693D1AB-B9C0-4131-904D-3F503B6F2FD0.mov" type="video/mp4">
+              </video>
+              <div class="results-video-label"><strong>Campaign Content</strong><span>Reel 8</span></div>
+            </div>
+            <div class="results-video-tile">
+              <video muted loop playsinline autoplay>
+                <source src="copy_D22803C7-B997-4B9A-B11E-B01AE0628A0F.mov" type="video/mp4">
+              </video>
+              <div class="results-video-label"><strong>Campaign Content</strong><span>Reel 9</span></div>
+            </div>
+            <div class="results-video-tile">
+              <video muted loop playsinline autoplay>
+                <source src="copy_DA908CE4-9247-4E0D-A544-29321E9403F2.mov" type="video/mp4">
+              </video>
+              <div class="results-video-label"><strong>Campaign Content</strong><span>Reel 10</span></div>
+            </div>
+          </div>
         </div>
-      </div>
-
-      <div class="results-panel" data-results-panel="websites">
-        <div class="results-showcase">
-          <section class="results-group">
-            <div class="results-row-head">
-              <div class="results-row-label">Websites</div>
-              <div class="results-row-meta">Builds, landing pages, and conversion pages</div>
-            </div>
-            <div class="results-mosaic">
-              <article class="results-tile span-2">
-                <div class="browser-chrome"><span></span><span></span><span></span></div>
-                <div class="browser-body">
-                  <div class="browser-stack">
-                    <div class="browser-line long"></div>
-                    <div class="browser-line"></div>
-                    <div class="browser-shot"></div>
-                    <div class="browser-mini-grid">
-                      <div class="browser-mini"></div>
-                      <div class="browser-mini"></div>
-                      <div class="browser-mini"></div>
-                    </div>
-                  </div>
-                  <div class="browser-copy">
-                    <div class="browser-eyebrow">Homepage build</div>
-                    <h4>Hero-to-enquiry website layout</h4>
-                    <p>Use your strongest full-page screenshot here to anchor the section.</p>
-                  </div>
-                </div>
-              </article>
-              <article class="results-tile fill soft">
-                <div class="browser-copy">
-                  <div class="browser-eyebrow">Offer page</div>
-                  <h4>High-converting service page</h4>
-                  <p>Great spot for a page that explains one offer clearly and pushes visitors toward action.</p>
-                </div>
-              </article>
-              <article class="results-tile soft">
-                <div class="results-empty">
-                  <strong>Empty slot</strong>
-                  <h4>Add another website proof piece</h4>
-                  <p>Upload another full-width screenshot, mobile view, or booking funnel comparison here.</p>
-                  <div class="results-service-tags">
-                    <span>Mobile mockup</span>
-                    <span>Booking flow</span>
-                    <span>Funnel</span>
-                  </div>
-                </div>
-              </article>
-              <article class="results-tile soft">
-                <div class="results-empty">
-                  <strong>Empty slot</strong>
-                  <h4>Save this for a niche service example</h4>
-                  <p>Useful for sectors like health, gyms, trades, clinics, or any other service page you want to feature.</p>
-                  <div class="results-service-tags">
-                    <span>Health</span>
-                    <span>Fitness</span>
-                    <span>Trades</span>
-                  </div>
-                </div>
-              </article>
-            </div>
-          </section>
-        </div>
-      </div>
-
-      <div class="results-panel" data-results-panel="branding">
-        <div class="results-showcase">
-          <section class="results-group">
-            <div class="results-row-head">
-              <div class="results-row-label">Branding</div>
-              <div class="results-row-meta">Identity systems, print, and campaign assets</div>
-            </div>
-            <div class="results-mosaic">
-              <article class="results-tile brand-tile tall">
-                <div class="brand-mark">Whitby<br>health</div>
-                <div class="brand-copy">
-                  <h4>Identity and print direction</h4>
-                  <p>Use this for a polished mockup that shows typography, colours, and layout choices.</p>
-                </div>
-              </article>
-              <article class="results-tile dark tall fill">
-                <div class="brand-copy" style="position:static">
-                  <h4>Premium signage presentation</h4>
-                  <p>Ideal for shopfronts, vehicle wraps, external signs, or interior branding photos.</p>
-                </div>
-              </article>
-              <article class="results-tile soft">
-                <div class="results-empty">
-                  <strong>Empty slot</strong>
-                  <h4>Add packaging or apparel mockups</h4>
-                  <p>Use this tile for branded clothing, cups, packaging, stationery, or printed collateral.</p>
-                  <div class="results-service-tags">
-                    <span>Apparel</span>
-                    <span>Packaging</span>
-                    <span>Stationery</span>
-                  </div>
-                </div>
-              </article>
-              <article class="results-tile soft">
-                <div class="results-empty">
-                  <strong>Empty slot</strong>
-                  <h4>Reserve this for campaign graphics</h4>
-                  <p>Helpful for launch campaigns, social templates, posters, or event material.</p>
-                  <div class="results-service-tags">
-                    <span>Social</span>
-                    <span>Posters</span>
-                    <span>Events</span>
-                  </div>
-                </div>
-              </article>
-            </div>
-          </section>
+        <div class="results-video-controls">
+          <button type="button" class="results-video-btn" data-slide="prev" aria-label="Previous videos">&#8592;</button>
+          <button type="button" class="results-video-btn" data-slide="next" aria-label="Next videos">&#8594;</button>
         </div>
       </div>
     </div>
